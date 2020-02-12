@@ -15,6 +15,15 @@ public class Doctor {
 	private String password;
 	private String specialization;
 	private String qualification;
+	private Integer rating;
+
+	public Integer getRating() {
+		return rating;
+	}
+
+	public void setRating(Integer rating) {
+		this.rating = rating;
+	}
 
 	public Long getDoctorId() {
 		return doctorId;
