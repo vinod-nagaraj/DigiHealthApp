@@ -85,8 +85,10 @@ public class DoctorServiceImplTest {
 		list.add(selectedSlot3);
 		DoctorRequestDto req = new DoctorRequestDto();
 		req.setSelectedslots(list);
+		ResponseDto resp  = new ResponseDto();
+		resp.setStatusCode(200);
 		Mockito.when(hospitalRepository.findByDoctorId(doctorId)).thenReturn(hospital);
-		ResponseDto resp = doctorServiceImpl.addSlots(req, doctorId);
+		resp = doctorServiceImpl.addSlots(req, doctorId);
 		assertEquals(200, resp.getStatusCode());
 		
 		

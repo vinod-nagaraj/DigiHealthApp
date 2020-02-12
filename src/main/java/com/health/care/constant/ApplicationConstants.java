@@ -17,5 +17,6 @@ public class ApplicationConstants {
 	public static final String USER_NOT_FOUND = "Invalid Credentials";
 	public static final Integer NOT_FOUND = 404;
 	public static final String EMPTY_CREDENTIALS = "404";
+	public static final String HOSPITAL_NOT_FOUND = "Hospital not found";
 
 }

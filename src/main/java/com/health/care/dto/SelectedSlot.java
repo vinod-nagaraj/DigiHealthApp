@@ -3,6 +3,15 @@ package com.health.care.dto;
 public class SelectedSlot {
 	
 	private String slotName;
+	private String status;
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	private Boolean availablity;
 	
 

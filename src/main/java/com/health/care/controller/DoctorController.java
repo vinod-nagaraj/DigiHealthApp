@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.health.care.dto.DoctorRequestDto;
 import com.health.care.dto.DoctorResponseDto;
+import com.health.care.dto.PatientDetailDto;
 import com.health.care.dto.ResponseDto;
 import com.health.care.service.DoctorService;
 /**
@@ -51,6 +52,12 @@ public class DoctorController {
 	public ResponseEntity<ResponseDto> addSlots(@RequestBody DoctorRequestDto doctorRequestDto, @PathVariable Long doctorId) {
 		ResponseDto responseDto=doctorService.addSlots(doctorRequestDto,doctorId);
 		return new ResponseEntity<ResponseDto>(responseDto, HttpStatus.OK);
+	}
+	
+	@GetMapping("/{doctorId}/patients")
+	public ResponseEntity<PatientDetailDto> getPatients(@PathVariable Long doctorId) {
+		PatientDetailDto patientDetailDto=doctorService.getPatients(doctorId);
+		return new ResponseEntity<PatientDetailDto>(patientDetailDto, HttpStatus.OK);
 	}
 
 }

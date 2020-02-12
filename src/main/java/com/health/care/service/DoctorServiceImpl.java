@@ -10,11 +10,15 @@ import org.springframework.stereotype.Service;
 import com.health.care.constant.ApplicationConstants;
 import com.health.care.dto.DoctorRequestDto;
 import com.health.care.dto.DoctorResponseDto;
+import com.health.care.dto.PatientDetail;
+import com.health.care.dto.PatientDetailDto;
 import com.health.care.dto.ResponseDto;
 import com.health.care.dto.SelectedSlot;
 import com.health.care.dto.SlotDetail;
+import com.health.care.entity.Appointment;
 import com.health.care.entity.Hospital;
 import com.health.care.entity.Slot;
+import com.health.care.repository.AppointmentRepository;
 import com.health.care.repository.HospitalRepository;
 
 /**
@@ -28,6 +32,9 @@ public class DoctorServiceImpl implements DoctorService {
 
 	@Autowired
 	private HospitalRepository hospitalRepository;
+
+	@Autowired
+	private AppointmentRepository appointmentRepository;
 
 	/**
 	 * 
@@ -64,23 +71,55 @@ public class DoctorServiceImpl implements DoctorService {
 	 */
 	@Override
 	public ResponseDto addSlots(DoctorRequestDto doctorRequestDto, Long doctorId) {
+
 		Hospital hospital = hospitalRepository.findByDoctorId(doctorId);
 		List<Slot> slots = new ArrayList<>();
 		List<SelectedSlot> selectedSlots = doctorRequestDto.getSelectedslots();
 		selectedSlots.forEach(selectedSlot -> {
 			if (selectedSlot.getAvailablity().equals(true)) {
 				Slot slot = new Slot();
+
+		Hospital hospital=hospitalRepository.findByDoctorId(doctorId);
+		List<Slot> slots= new ArrayList<>();
+		List<SelectedSlot> selectedSlots=doctorRequestDto.getSelectedslots();
+		selectedSlots.forEach(selectedSlot->{
+			
+				Slot slot= new Slot();
+
 				slot.setSlotName(selectedSlot.getSlotName());
-				slot.setStatus(ApplicationConstants.AVAILABLE);
+				slot.setAvailablity(selectedSlot.getAvailablity());
 				slots.add(slot);
-			}
+			
 		});
 		hospital.setSlots(slots);
+		
 		hospitalRepository.save(hospital);
 		ResponseDto responseDto = new ResponseDto();
 		responseDto.setStatusCode(ApplicationConstants.SUCCESS_CODE);
 		responseDto.setMessage(ApplicationConstants.ADD_SLOT_SUCCESS_MSG);
 		return responseDto;
+	}
+
+	@Override
+	public PatientDetailDto getPatients(Long doctorId) {
+		Hospital hospital = hospitalRepository.findByDoctorId(doctorId);
+		PatientDetailDto patientDetailDto = new PatientDetailDto();
+		List<PatientDetail> patientDetails = new ArrayList<>();
+
+		List<Slot> slots = hospital.getSlots();
+		slots.forEach(slot -> {
+			PatientDetail patientDetail = new PatientDetail();
+			if (slot.getStatus().equalsIgnoreCase(ApplicationConstants.BOOKED)) {
+				Appointment app = appointmentRepository.findBySlotName(slot.getSlotName());
+				patientDetail.setPatientContact(app.getPatientContact());
+				patientDetail.setPatientName(app.getPatientName());
+				patientDetail.setSlotName(app.getSlotName());
+				patientDetails.add(patientDetail);
+			}
+		});
+		patientDetailDto.setPatientDetails(patientDetails);
+		patientDetailDto.setStatusCode(ApplicationConstants.SUCCESS_CODE);
+		return patientDetailDto;
 	}
 
 }

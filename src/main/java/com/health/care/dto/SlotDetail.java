@@ -4,6 +4,13 @@ public class SlotDetail {
 
 	private String slotName;
 	private String status;
+	private Boolean availablity;
+	public Boolean getAvailablity() {
+		return availablity;
+	}
+	public void setAvailablity(Boolean availablity) {
+		this.availablity = availablity;
+	}
 	public String getStatus() {
 		return status;
 	}
