@@ -1,5 +1,6 @@
 package com.health.care.controller;
 
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Before;
@@ -43,5 +44,6 @@ public class LoginControllerTest {
 		assertEquals(200, res.getStatusCode());
 
 	}
+
 
 }

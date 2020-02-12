@@ -75,24 +75,23 @@ public class DoctorServiceImpl implements DoctorService {
 		Hospital hospital = hospitalRepository.findByDoctorId(doctorId);
 		List<Slot> slots = new ArrayList<>();
 		List<SelectedSlot> selectedSlots = doctorRequestDto.getSelectedslots();
-		selectedSlots.forEach(selectedSlot->{
-			
-				Slot slot= new Slot();
+		selectedSlots.forEach(selectedSlot -> {
 
-				slot.setSlotName(selectedSlot.getSlotName());
-				slot.setAvailablity(selectedSlot.getAvailablity());
-				if(selectedSlot.getAvailablity()==true) {
-					slot.setStatus(ApplicationConstants.AVAILABLE);
-				}
-				else {
-					slot.setStatus(ApplicationConstants.NOT_AVAILABLE);
-				}
-				
-				slots.add(slot);
-			
+			Slot slot = new Slot();
+
+			slot.setSlotName(selectedSlot.getSlotName());
+			slot.setAvailablity(selectedSlot.getAvailablity());
+			if (selectedSlot.getAvailablity() == true) {
+				slot.setStatus(ApplicationConstants.AVAILABLE);
+			} else {
+				slot.setStatus(ApplicationConstants.NOT_AVAILABLE);
+			}
+
+			slots.add(slot);
+
 		});
 		hospital.setSlots(slots);
-		
+
 		hospitalRepository.save(hospital);
 		ResponseDto responseDto = new ResponseDto();
 		responseDto.setStatusCode(ApplicationConstants.SUCCESS_CODE);
