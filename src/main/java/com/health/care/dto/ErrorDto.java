@@ -1,6 +1,7 @@
 package com.health.care.dto;
 
 public class ErrorDto {
+
 	private Integer statusCode;
 	private String message;
 	public Integer getStatusCode() {
@@ -15,5 +16,7 @@ public class ErrorDto {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
+	
 	
 }

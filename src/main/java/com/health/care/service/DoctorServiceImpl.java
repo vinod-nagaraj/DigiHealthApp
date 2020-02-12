@@ -39,7 +39,7 @@ public class DoctorServiceImpl implements DoctorService {
 		List<Slot> slots=hospital.getSlots();
 		DoctorResponseDto doctorResponseDto=new DoctorResponseDto();
 		if(slots.isEmpty()) {
-			doctorResponseDto.setStatusCode(ApplicationConstants.NOTFOUND_CODE);
+			doctorResponseDto.setStatusCode(ApplicationConstants.NOT_FOUND);
 			doctorResponseDto.setMessage(ApplicationConstants.SLOT_NOAVAIL_MSG);
 			doctorResponseDto.setSlotDetails(null);
 		}else
