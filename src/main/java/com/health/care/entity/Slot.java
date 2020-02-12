@@ -1,22 +1,21 @@
 package com.health.care.entity;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-@Entity
+@Embeddable
 public class Slot {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long slotId;
 	private String slotName;
+	private Boolean availablity;
 	private String status;
-	public Long getSlotId() {
-		return slotId;
+	public String getStatus() {
+		return status;
 	}
-	public void setSlotId(Long slotId) {
-		this.slotId = slotId;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	public String getSlotName() {
 		return slotName;
@@ -24,10 +23,11 @@ public class Slot {
 	public void setSlotName(String slotName) {
 		this.slotName = slotName;
 	}
-	public String getStatus() {
-		return status;
+	public Boolean getAvailablity() {
+		return availablity;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+	public void setAvailablity(Boolean availablity) {
+		this.availablity = availablity;
 	}
+	
 }

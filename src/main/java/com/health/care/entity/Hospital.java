@@ -1,9 +1,14 @@
 package com.health.care.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 
 @Entity
 public class Hospital {
@@ -14,7 +19,16 @@ public class Hospital {
 	private String hospitalName;
 	private String location;
 	private Long doctorId;
-	private Long slotId;
+	
+	@ElementCollection
+	private List<Slot> slots= new ArrayList<>();
+	
+	public List<Slot> getSlots() {
+		return slots;
+	}
+	public void setSlots(List<Slot> slots) {
+		this.slots = slots;
+	}
 	public Long getHospitalId() {
 		return hospitalId;
 	}
@@ -38,11 +52,5 @@ public class Hospital {
 	}
 	public void setDoctorId(Long doctorId) {
 		this.doctorId = doctorId;
-	}
-	public Long getSlotId() {
-		return slotId;
-	}
-	public void setSlotId(Long slotId) {
-		this.slotId = slotId;
 	}
 }

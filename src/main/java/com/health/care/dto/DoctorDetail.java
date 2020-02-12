@@ -8,6 +8,15 @@ public class DoctorDetail {
 	private String qualification;
 	private String mobileNumber;
 	private String hospitalName;
+	private Integer rating;
+
+	public Integer getRating() {
+		return rating;
+	}
+
+	public void setRating(Integer rating) {
+		this.rating = rating;
+	}
 
 	public Long getDoctorId() {
 		return doctorId;

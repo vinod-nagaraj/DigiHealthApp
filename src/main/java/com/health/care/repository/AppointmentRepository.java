@@ -8,4 +8,6 @@ import com.health.care.entity.Appointment;
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long>{
 
+	Appointment findBySlotName(String slotName);
+
 }

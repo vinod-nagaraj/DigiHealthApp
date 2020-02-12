@@ -18,7 +18,13 @@ public class GlobalExceptionHandler {
 		errorDto.setStatusCode(HttpStatus.NOT_FOUND.value());
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDto);
 	}
-	
+	@ExceptionHandler(HospitalNotFoundException.class)
+	public ResponseEntity<ErrorDto> hospitalNotFoundException(HospitalNotFoundException e){
+		ErrorDto errorDto = new ErrorDto();
+		errorDto.setMessage(e.getMessage());
+		errorDto.setStatusCode(HttpStatus.NOT_FOUND.value());
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDto);
+	}
 	 
 		
 }
