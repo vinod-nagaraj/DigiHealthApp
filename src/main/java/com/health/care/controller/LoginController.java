@@ -35,7 +35,7 @@ public class LoginController {
 	 * 
 	 *         this API is used to authenticate the User
 	 * 
-	 * @param mobileNumber & Password will be used to Login.
+	 * @param mobileNumber & Password of Doctor will be used for Login.
 	 * @return statusCode,userName,userId.
 	 * @throws NotFoundException
 	 * 

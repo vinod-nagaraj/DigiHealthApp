@@ -1,6 +1,7 @@
 package com.health.care.controller;
 
-import static org.junit.Assert.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -34,19 +35,15 @@ public class LoginControllerTest {
 		LoginRequestDto req = new LoginRequestDto();
 		LoginRequestDto req1 = new LoginRequestDto();
 		LoginResponseDto res = new LoginResponseDto();
-		/*
-		 * Doctor doctor1 = new Doctor(); doctor1.setMobileNumber("9513090305");
-		 * doctor1.setPassword("r@sid1000"); doctor1.setMobileNumber("9513090306");
-		 * doctor1.setPassword("vinod123");
-		 */
+		res.setStatusCode(200);
 		req.setPassword("vinod");
 		req.setMobileNumber("9513090306");
 		req1.setMobileNumber("9513090305");
 		req1.setPassword("r@sid1000");
 		Mockito.when(loginService.authenticateCustomer(req)).thenReturn(res);
+		assertEquals(200, res.getStatusCode());
 
 	}
-	
-	
+
 
 }
