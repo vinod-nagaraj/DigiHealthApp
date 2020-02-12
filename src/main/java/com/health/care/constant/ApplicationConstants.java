@@ -8,6 +8,7 @@ public class ApplicationConstants {
 	public static final String SLOT_NOAVAIL_MSG = "Slots not added"; 
 	public static final String ADD_SLOT_SUCCESS_MSG = "Slots added successfully"; 
 	public static final String AVAILABLE = "available"; 
+	public static final String NOT_AVAILABLE = "notavailable";
 	public static final String BOOKED = "booked"; 
 
 	public static final String MOBILE_NOT_FOUND = "MobileNumber not found";
@@ -16,5 +17,5 @@ public class ApplicationConstants {
 	public static final Integer NOT_FOUND = 404;
 	public static final String EMPTY_CREDENTIALS = "404";
 	public static final String HOSPITAL_NOT_FOUND = "Hospital not found";
-
+	public static final String SLOT_ALREADY_BOOKED = "ALready slot booked";
 }

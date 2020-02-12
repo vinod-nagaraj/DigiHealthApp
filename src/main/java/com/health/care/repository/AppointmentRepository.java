@@ -10,4 +10,6 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long>{
 
 	Appointment findBySlotName(String slotName);
 
+	Appointment findByDoctorIdAndSlotName(Long doctorId, String slotName);
+
 }

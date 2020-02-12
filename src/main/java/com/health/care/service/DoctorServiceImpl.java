@@ -78,6 +78,13 @@ public class DoctorServiceImpl implements DoctorService {
 				Slot slot= new Slot();
 				slot.setSlotName(selectedSlot.getSlotName());
 				slot.setAvailablity(selectedSlot.getAvailablity());
+				if(selectedSlot.getAvailablity()==true) {
+					slot.setStatus(ApplicationConstants.AVAILABLE);
+				}
+				else {
+					slot.setStatus(ApplicationConstants.NOT_AVAILABLE);
+				}
+				
 				slots.add(slot);
 			
 		});

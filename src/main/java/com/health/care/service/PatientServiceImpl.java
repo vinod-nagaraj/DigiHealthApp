@@ -18,6 +18,7 @@ import com.health.care.entity.Doctor;
 import com.health.care.entity.Hospital;
 import com.health.care.entity.Slot;
 import com.health.care.exception.HospitalNotFoundException;
+import com.health.care.exception.SlotAlreadyBookedException;
 import com.health.care.repository.AppointmentRepository;
 import com.health.care.repository.DoctorRepository;
 import com.health.care.repository.HospitalRepository;
@@ -78,11 +79,17 @@ public class PatientServiceImpl implements PatientService {
 		appointment.setPatientContact(patientRequestDto.getPatientContact());
 		appointment.setPatientName(patientRequestDto.getPatientName());
 		appointment.setSlotName(patientRequestDto.getSlotName());
+		Appointment dbappointment = appointmentRepository.findByDoctorIdAndSlotName(patientRequestDto.getDoctorId(),
+				patientRequestDto.getSlotName());
+		if (!(ObjectUtils.isEmpty(dbappointment))) {
+			throw new SlotAlreadyBookedException(ApplicationConstants.SLOT_ALREADY_BOOKED);
+		}
 		Hospital hospital = hospitalRepository.findByHospitalName(patientRequestDto.getHospitalName());
-		/*
-		 * if (ObjectUtils.isEmpty(hospital)) { throw new
-		 * HospitalNotFoundException(ApplicationConstants.HOSPITAL_NOT_FOUND); }
-		 */
+
+		if (ObjectUtils.isEmpty(hospital)) {
+			throw new HospitalNotFoundException(ApplicationConstants.HOSPITAL_NOT_FOUND);
+		}
+
 		List<Slot> slots = hospital.getSlots();
 		slots.forEach(slot -> {
 			if (slot.getSlotName().equalsIgnoreCase(patientRequestDto.getSlotName())) {
