@@ -31,10 +31,8 @@ public class DoctorController {
 	private DoctorService doctorService;
 	
 	/**
-	 * 
 	 * @param doctorId of Doctor
 	 * @return DoctorResponseDto as response
-	 * 
 	 */
 	@GetMapping("/{doctorId}/slots")
 	public ResponseEntity<DoctorResponseDto> getSlots(@PathVariable Long doctorId) {
@@ -43,17 +41,18 @@ public class DoctorController {
 	}
 	
 	/**
-	 * 
 	 * @param doctorId of Doctor
 	 * @return ResponseDto as response
-	 * 
 	 */
 	@PostMapping("/{doctorId}/slots")
 	public ResponseEntity<ResponseDto> addSlots(@RequestBody DoctorRequestDto doctorRequestDto, @PathVariable Long doctorId) {
 		ResponseDto responseDto=doctorService.addSlots(doctorRequestDto,doctorId);
 		return new ResponseEntity<ResponseDto>(responseDto, HttpStatus.OK);
 	}
-	
+	/**
+	 * @param doctorId of Doctor
+	 * @return PatientDetailDto as response
+	 */
 	@GetMapping("/{doctorId}/patients")
 	public ResponseEntity<PatientDetailDto> getPatients(@PathVariable Long doctorId) {
 		PatientDetailDto patientDetailDto=doctorService.getPatients(doctorId);

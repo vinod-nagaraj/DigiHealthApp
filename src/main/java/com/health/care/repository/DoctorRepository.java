@@ -12,7 +12,7 @@ import com.health.care.entity.Doctor;
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor, Long> {
 	
-	 List findBySpecialization(String specialization);
+	 List<Doctor> findBySpecialization(String specialization);
 	
 	Optional<Doctor> findByMobileNumberAndPassword(String mobileNumber, String password);
 

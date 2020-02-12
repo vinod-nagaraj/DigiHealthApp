@@ -1,5 +1,7 @@
 package com.health.care.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Optional;
 
 import org.junit.Before;
@@ -11,6 +13,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import com.health.care.dto.LoginRequestDto;
+import com.health.care.dto.LoginResponseDto;
 import com.health.care.entity.Doctor;
 import com.health.care.exception.NotFoundException;
 import com.health.care.repository.DoctorRepository;
@@ -42,6 +45,8 @@ public class LoginServiceImplTest {
 		req1.setMobileNumber("9513090305");
 		req1.setPassword("r@sid1000");
 		Mockito.when(doctorRepository.findByMobileNumberAndPassword(req.getMobileNumber(), req.getPassword())).thenReturn(Optional.of(doctor1));
+		LoginResponseDto resp = loginServiceImpl.authenticateCustomer(req);
+		assertEquals(200, resp.getStatusCode());
 		
 	
 		
