@@ -6,4 +6,6 @@ import com.health.care.entity.Hospital;
 
 public interface HospitalRepository extends JpaRepository<Hospital, Long> {
 
+	Hospital findByDoctorId(Long doctorId);
+
 }
