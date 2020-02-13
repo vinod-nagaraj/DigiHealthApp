@@ -26,7 +26,7 @@ public class GlobalExceptionHandler {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDto);
 	}
 	@ExceptionHandler(SlotAlreadyBookedException.class)
-	public ResponseEntity<ErrorDto> SlotAlreadyBookedException(SlotAlreadyBookedException e){
+	public ResponseEntity<ErrorDto> slotAlreadyBookedException(SlotAlreadyBookedException e){
 		ErrorDto errorDto = new ErrorDto();
 		errorDto.setMessage(e.getMessage());
 		errorDto.setStatusCode(HttpStatus.NOT_FOUND.value());

@@ -51,7 +51,7 @@ public class PatientServiceImpl implements PatientService {
 	@Override
 	public PatientResponseDto search(String specialization) {
 		List<Doctor> doctors = doctorRepository.findBySpecialization(specialization);
-		List<DoctorDetail> doctorDetails = new ArrayList<DoctorDetail>();
+		List<DoctorDetail> doctorDetails = new ArrayList<>();
 		doctors.forEach(doctor -> {
 			DoctorDetail doctorDetail = new DoctorDetail();
 			Hospital hospital = hospitalRepository.findByDoctorId(doctor.getDoctorId());

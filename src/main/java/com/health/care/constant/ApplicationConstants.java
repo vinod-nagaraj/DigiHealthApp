@@ -2,7 +2,10 @@ package com.health.care.constant;
 
 public class ApplicationConstants {
 
-
+	private ApplicationConstants()
+	{
+		
+	}
 	public static final Integer SUCCESS_CODE = 200; 
 	public static final String SLOT_SUCCESS_MSG = "Slots retrieved successfully"; 
 	public static final String SLOT_NOAVAIL_MSG = "Slots not added"; 
@@ -22,4 +25,5 @@ public class ApplicationConstants {
 	public static final String HOSPITAL_NOT_FOUND = "Hospital not found";
 	public static final String SLOT_ALREADY_BOOKED = "ALready slot booked";
 	public static final String LIST = "List of Details";
+	public static final Boolean TRUE = true;
 }

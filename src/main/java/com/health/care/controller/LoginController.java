@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.health.care.constant.ApplicationConstants;
 import com.health.care.dto.LoginRequestDto;
 import com.health.care.dto.LoginResponseDto;
 import com.health.care.exception.NotFoundException;
@@ -43,7 +42,7 @@ public class LoginController {
 
 	@PostMapping
 	public ResponseEntity<LoginResponseDto> authenticateCustomer(@Valid @RequestBody LoginRequestDto loginRequestDto)
-			throws NotFoundException {
+			 {
 		
 		return ResponseEntity.ok().body(loginService.authenticateCustomer(loginRequestDto));
 	}
